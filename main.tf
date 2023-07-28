@@ -55,5 +55,10 @@ resource "aws_docdb_cluster" "main" {
   tags = merge(var.tags, {Name = "${var.name}-${var.env}" })
 }
 
-
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = var.instance_count
+  identifier         = "${var.name}.${var.env}-${count.index}"
+  cluster_identifier = aws_docdb_cluster.main.id
+  instance_class     = var.instance_class
+}
 
