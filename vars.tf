@@ -13,4 +13,3 @@ variable "port_no" {
 }
 variable "instance_count" {}
 variable "instance_class" {}
-variable "kms_arn" {}
